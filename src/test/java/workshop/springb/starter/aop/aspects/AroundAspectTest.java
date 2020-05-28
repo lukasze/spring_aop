@@ -54,28 +54,5 @@ class AroundAspectTest {
 
         assertEquals(expectedOut, outContent.toString());
     }
-
-    @Test
-    @WithMockUser
-    @DisplayName("@Around(\"workshop.springb.starter.aop.pointcuts.AppPointcuts.methodsInServicePackage()\") EXCEPTION")
-    void around_methodsInServicePackage_EXCEPTION() throws Exception {
-
-        String expectedOut = AroundAspect.AROUND_BEFORE_MSG
-                + System.lineSeparator()
-                + AroundAspect.AROUND_AFTER_MSG
-                + " "
-                + Exception.class.getSimpleName()
-                + System.lineSeparator();
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/greet")
-                .contentType("application/json")
-                .param("name", "ex")
-                .param("isFormal", "true"))
-                .andExpect(status().is5xxServerError())
-                .andExpect(jsonPath("$.err").value("Probably request's param 'name' has an 'ex' value :)"));
-
-        assertEquals(expectedOut, outContent.toString());
-    }
-
 }
 

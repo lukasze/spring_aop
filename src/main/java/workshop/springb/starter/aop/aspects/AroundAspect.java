@@ -25,14 +25,8 @@ public class AroundAspect {
           */
         Object o;
         System.out.println(AROUND_BEFORE_MSG);
-        try {
-            o = proceedingJoinPoint.proceed();
-            System.out.println(AROUND_AFTER_MSG);
-        } catch (Exception e) {
-            System.out.println(AROUND_AFTER_MSG + " " + e.getClass().getSimpleName());
-            throw e;
-        }
-
+        o = proceedingJoinPoint.proceed();
+        System.out.println(AROUND_AFTER_MSG);
         return o;
     }
 }
