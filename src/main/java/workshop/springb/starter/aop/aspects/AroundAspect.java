@@ -17,18 +17,15 @@ public class AroundAspect {
     static final String AROUND_AFTER_MSG = "around after";
 
     @Around("workshop.springb.starter.aop.pointcuts.AppPointcuts.methodsInServicePackage()")
-    public Object logAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public void logAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
-        Object o;
         System.out.println(AROUND_BEFORE_MSG);
         try {
-            o = proceedingJoinPoint.proceed();
+            proceedingJoinPoint.proceed();
             System.out.println(AROUND_AFTER_MSG);
         } catch (Exception e) {
             System.out.println(AROUND_AFTER_MSG + " " + e.getClass().getSimpleName());
             throw e;
         }
-
-        return o;
     }
 }

@@ -15,7 +15,7 @@ public class AppPointcuts {
     }
 
 
-    @Pointcut("execution(* workshop.springb.starter.service..*.*(..))")
+    @Pointcut("execution(* workshop.springb.starter.aop.pointcuts..*.*(..))")
     public void methodsInServicePackageAndSubpackages() {
     }
 
@@ -32,7 +32,7 @@ public class AppPointcuts {
     public void methodsInClassesAnnotatedWithLoggable() {
     }
 
-    @Pointcut("within(workshop.springb.starter.service.subservice.GreetSubservice)")
+    @Pointcut("within(workshop.springb.starter.aop.Constans)")
     public void methodsInAClassGreetSubservice() {
     }
 
